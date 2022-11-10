@@ -18,7 +18,7 @@ public class TestNG {
 
 		String userNmae = "standard_user";
 		String password = "secret_sauce";
-		String expectedNumber = "6";
+		int expectedNumber = 6;
 
 		driver.findElement(By.xpath("//*[@id=\"user-name\"]")).sendKeys(userNmae);
 		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(password);
@@ -30,15 +30,15 @@ public class TestNG {
 		Thread.sleep(5000);
 
 		List<WebElement> dd = driver.findElements(By.className("btn"));
-		for (int i = 1; i < dd.size(); i++) {
+		for (int i = 0; i < dd.size(); i++) {
 			dd.get(i).click();
 
 		}
 		Thread.sleep(3000);
-		String ActualNumber = driver.findElement(By.xpath("//*[@id=\"shopping_cart_container\"]/a")).getText();
-		Thread.sleep(3000);
-		System.out.println(ActualNumber);
-		Assert.assertEquals(ActualNumber, expectedNumber);
+		String actualNumber = driver.findElement(By.xpath("//*[@id=\"shopping_cart_container\"]/a")).getText();
+		int actualNumberPares = Integer.parseInt(actualNumber);
+		System.out.println(actualNumberPares);
+		Assert.assertEquals(actualNumberPares, expectedNumber);
 
 	}
 
